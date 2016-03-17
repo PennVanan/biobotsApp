@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Log in</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<style>
+body{
+	font-family:Arial,Helvetica,sans-serif;
+	font-size: 16px;
+}
+</style>
+<script>
+var app = angular.module('myApp', []);
+app.controller('Controller', function ($scope, $sce) {
+	$scope.item = $sce.trustAsHtml('<span><b>hi</b><i>there</i></span>');
+});
+</script>
+</head>
+<body bgcolor="#E6E6FA">
+	{% load staticfiles %}
+	<img src = "{% static "images/biobots.jpg" %}" alt = "My Image"/>
+	<div ng-app='myApp' ng-controller="Controller">
+		   <div ng-bind-html="item"></div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<center>
+	
+	<form action="/login/" method="post">
+                {% csrf_token %}
+		{% if next %}
+		<input type="hidden" name="next" value="{{ next }}" />
+		{% endif %}
+		Enter User Mail ID: &nbsp; &nbsp; 
+		<input type="text" name="usermail" value="{{ usermail}}" /> <br/>
+		<br/>
+		<input type="submit" value="Analyze Usage" />
+	</form>
+	</center>
+</body>
+</html>
+

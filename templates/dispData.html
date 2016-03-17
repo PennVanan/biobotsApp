@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Log in</title>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<style>
+body{
+	        font-family:Arial,Helvetica,sans-serif;
+			        font-size: 16px;
+}
+</style>
+	</head>
+        {% load static %}
+	<body bgcolor="#E6E6FA">
+        <center> <b>   User Statistics </b> </center>
+	<pre>
+	    {{state}}
+	</pre>
+
+	<form action = view_print_result/ method = "post">
+		{% csrf_token %}
+		<input type="submit" value="Visualize Print Data(DeadPercent, LivePercent and Elasticity" />
+        </form>
+
+
+<form action = view_pressure_result/ method = "post">
+		{% csrf_token %}
+		<input type="submit" value="Visualize Pressure(Extruder 1, 2)" />
+        </form>
+
+<form action = view_crosslinking_result/ method = "post">
+		{% csrf_token %}
+		<input type="submit" value="Visualize CrossLinking(Duration, Intensity)" />
+        </form>
+
+<form action = view_layernum_result/ method = "post">
+		{% csrf_token %}
+		<input type="submit" value="Visualize Number of Layers" />
+</form>
+
+<form action = view_layerheight_result/ method = "post">
+		{% csrf_token %}
+		<input type="submit" value="Visualize Layer Height" />
+</form>
+	</body>
+</html>
